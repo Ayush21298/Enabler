@@ -266,7 +266,7 @@
             // alert($("#platformInput").val());
 
             if($("#platformInput").val() == "Udemy"){
-              $.get("http://127.0.0.1:8000/search/udemy", {"search" : $("#searchInput").val()}, function(data,status) {
+              $.get("http://18.189.72.178:8000/search/udemy", {"search" : $("#searchInput").val()}, function(data,status) {
                 // alert(JSON.stringify(data));
 
                 $("#searchContainer").html("");
@@ -288,7 +288,7 @@
 
               });
             } else if($("#platformInput").val() == "Coursera"){
-              $.get("http://127.0.0.1:8000/search/coursera", {"search" : $("#searchInput").val()}, function(data,status) {
+              $.get("http://18.189.72.178:8000/search/coursera", {"search" : $("#searchInput").val()}, function(data,status) {
                 // alert(JSON.stringify(data));
 
                 $("#searchContainer").html("");
@@ -310,7 +310,7 @@
 
               });
             } else if($("#platformInput").val() == "edX"){
-              $.get("http://127.0.0.1:8000/search/edx", {"search" : $("#searchInput").val()}, function(dataa,status) {
+              $.get("http://18.189.72.178:8000/search/edx", {"search" : $("#searchInput").val()}, function(dataa,status) {
 
                 data = dataa["objects"]["results"]
 
