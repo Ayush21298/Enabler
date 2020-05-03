@@ -293,15 +293,15 @@
 
                 $("#searchContainer").html("");
 
-                for (var i = 0; i < data.length; i++) {
+                for (var i = 0; i < data["elements"].length; i++) {
                   var temp = `
                   <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="icon-box">
                       <div class="icon">
-                        <img src="https://economictimes.indiatimes.com/thumb/msid-71427663,width-1200,height-900,resizemode-4,imgsize-57628/coursera-agencies.jpg">
+                        <img src="${data["elements"][i]["photoUrl"]}">
                       </div>
-                      <h4><a target="_blank" href="${data[i]["url"]}">${data[i]["title"]}</a></h4>
-                      <p>${data[i]["snippet"]}</p>
+                      <h4><a target="_blank" href="https://www.coursera.org/learn/${data["elements"][i]["slug"]}">${data["elements"][i]["name"]}</a></h4>
+                      <p>${data["elements"][i]["description"].split('.')[0] + '.'}</p>
                     </div>
                   </div>
                   `
@@ -310,8 +310,11 @@
 
               });
             } else if($("#platformInput").val() == "edX"){
-              $.get("http://127.0.0.1:8000/search/edx", {"search" : $("#searchInput").val()}, function(data,status) {
-                // alert(JSON.stringify(data));
+              $.get("http://127.0.0.1:8000/search/edx", {"search" : $("#searchInput").val()}, function(dataa,status) {
+
+                data = dataa["objects"]["results"]
+
+                alert(JSON.stringify(data));
 
                 $("#searchContainer").html("");
 
@@ -320,10 +323,10 @@
                   <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="icon-box">
                       <div class="icon">
-                        <img src="https://osswatch.jiscinvolve.org/wp/files/2013/03/edX_Logo_Col_RGB_FINAL.jpg">
+                        <img src="${data[i]["image_url"]}">
                       </div>
-                      <h4><a target="_blank" href="${data[i]["url"]}">${data[i]["title"]}</a></h4>
-                      <p>${data[i]["snippet"]}</p>
+                      <h4><a target="_blank" href="${data[i]["marketing_url"]}">${data[i]["title"]}</a></h4>
+                      <p>${data[i]["short_description"]}</p>
                     </div>
                   </div>
                   `
