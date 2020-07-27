@@ -274,7 +274,7 @@
             // alert($("#platformInput").val());
 
             if($("#platformInput").val() == "Udemy"){
-              $.get("http://18.189.72.178:8000/search/udemy", {"search" : $("#searchInput").val()}, function(data,status) {
+              $.get("https://ayush21298.pythonanywhere.com/search/udemy", {"search" : $("#searchInput").val()}, function(data,status) {
                 // alert(JSON.stringify(data));
 
                 $("#searchContainer").html("");
@@ -296,7 +296,7 @@
 
               });
             } else if($("#platformInput").val() == "Coursera"){
-              $.get("http://18.189.72.178:8000/search/coursera", {"search" : $("#searchInput").val()}, function(data,status) {
+              $.get("https://ayush21298.pythonanywhere.com/search/coursera", {"search" : $("#searchInput").val()}, function(data,status) {
                 // alert(JSON.stringify(data));
 
                 $("#searchContainer").html("");
@@ -318,7 +318,7 @@
 
               });
             } else if($("#platformInput").val() == "edX"){
-              $.get("http://18.189.72.178:8000/search/edx", {"search" : $("#searchInput").val()}, function(dataa,status) {
+              $.get("https://ayush21298.pythonanywhere.com/search/edx", {"search" : $("#searchInput").val()}, function(dataa,status) {
 
                 data = dataa["objects"]["results"]
 
@@ -343,7 +343,7 @@
 
               });
             } else if($("#platformInput").val() == "HarvardX"){
-              $.get("http://18.189.72.178:8000/search/harvardx", {"search" : $("#searchInput").val()}, function(dataa,status) {
+              $.get("https://ayush21298.pythonanywhere.com/search/harvardx", {"search" : $("#searchInput").val()}, function(dataa,status) {
 
                 data = dataa["objects"]["results"]
 
