@@ -243,11 +243,17 @@
           <div class="form-group">
             <label for="platformInput">Platform</label>
             <select class="form-control" id="platformInput">
-              <option value="Udemy">Udemy</option>
-              <option value="Coursera">Coursera</option>
-              <option value="edX">edX</option>
-              <option value="HarvardX">HarvardX</option>
-              <option value="All">All</option>
+              <optgroup>
+                <option value="Udemy">Udemy</option>
+                <option value="Coursera">Coursera</option>
+                <option value="edX">edX</option>
+                <option value="HarvardX">HarvardX</option>
+                <option value="All">All</option>
+                <!-- <option value="All">Udemy + Coursera + edX + HarvardX</option> -->
+              </optgroup>
+              <optgroup>
+                <option value="Enabler Studios">Enabler Studios</option>
+              </optgroup>
             </select>
           </div>
           <button type="button" onclick="search_btn()" class="btn btn-primary">Search</button>
@@ -460,7 +466,38 @@
 
               });
 
-            } 
+            } else if($("#platformInput").val() == "Enabler Studios"){
+              $.get(base_url+"/search/studios", {"search" : $("#searchInput").val()}, function(data,status) {
+
+                // alert(JSON.stringify(data));
+
+                $("#searchContainer").html("");
+
+                for (var i = 0; i < data.length; i++) {
+
+                  var url="";
+                  if(data[i]["url"] != "-"){
+                    url = data[i]["url"]
+                  } else {
+                    url = base_url + "/" + data[i]["file"]
+                  }
+
+                  var temp = `
+                  <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="icon-box">
+                      <div class="icon">
+                        <img style="width:'64px'; height:'64px';" src="${base_url + "/" + data[i]["thumbnail"]}">
+                      </div>
+                      <h4><a target="_blank" href="${url}">${data[i]["title"]}</a></h4>
+                      <p>${data[i]["description"]}</p>
+                    </div>
+                  </div>
+                  `
+                  $("#searchContainer").html($("#searchContainer").html() + temp);
+                }
+
+              });
+            }
 
 
           }
