@@ -2184,3 +2184,7 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+.icon {
+  max-width: :20vw;
+}
